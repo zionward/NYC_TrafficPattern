@@ -54,7 +54,7 @@ scc(v):
     Find qualified links
     Build graph based on vertice and links d
     tarjan(d)
-```
+```   
 
 ## Construcing Meta Graph
 The scc considered the case when node can go back to iteself as a component. However, New York City has many one way roads, which are all ignored as components if we use scc as base. Therefore, the component criteria is that either it is a directed cyclic graph where source node can go back to itself, or it can go from source node to sink node. 
