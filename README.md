@@ -49,19 +49,19 @@ Let C be any strong component of G that is a sink in scc(G)->C is a sink compone
 
 ## Counting Strongly Connected Components
 We use the package tarjan to get scc then use DFS algorithms to visit each node.
-
+```
     scc(v):
         Find qualified links
         Build graph based on vertice and links D
         scc <- tarjan(D)
-
+```
 
 ## Construcing Meta Graph
 The scc considered the case when node can go back to iteself as a component. However, New York City has many one way roads, which are all ignored as components if we use scc as base. Therefore, the component criteria is that either it is a directed cyclic graph where source node can go back to itself, or it can go from source node to sink node. 
-
+```
     countPath(D,scc):
         Build meta-graph G
         Find sourse sets V
         For each source v in V:
             Use Pascal's triangle get all path begining on v
-    
+ ```   
