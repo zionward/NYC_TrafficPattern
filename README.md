@@ -65,3 +65,4 @@ The scc considered the case when node can go back to iteself as a component. How
         For each source v in V:
             Use Pascal's triangle get all path begining on v
  ```   
+
