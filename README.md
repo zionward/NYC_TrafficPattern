@@ -37,13 +37,27 @@ We then want to detect how link is connected based on error value, according to 
             case 2: single link in list of links belongs to one comonent then update bar
             case 3: components which no link belong to, create new bar for each component
      //result: list of [the largest list of components, start criteria, end criteria]
+
 ## Constructing Directed Graph
 Since undirected graph igores directions, when two links have the same begin node but different end node, it was counted as a single component where as there is no way to go from one link to the other. When analyzing error flucutaion, we want to consider links containing node to go back to iteself, so we begin to count components under directed graph.
 ![Picture](https://github.com/zionward/NYC_TrafficPattern/blob/master/1702/diagram/Untitled%20Diagram.png?raw=true)
-assumption:A vertex u is a source if it has no in-coming edges. A vertex u is a sink if it has no out-going edges. let C be any strong component of G that is a sink in scc(G)->C is a sink component.we use the package tarjan to get scc then use DFS algorithms to visit each node
+
+## Preliminary
+A directed graph is strongly connected if there is a directed path from any vertex to any other. A directed graph is acyclic if it does not contain a directed cycle; directed acyclic graphs are often called dags.
+Any vertex in a dag that has no incoming vertices is called a source; any vertex with no outgoing edges is called a sink. 
+Let C be any strong component of G that is a sink in scc(G)->C is a sink component.
+
+## Counting Strongly Connected Components
+We use the package tarjan to get scc then use DFS algorithms to visit each node.
+```
+scc(v):
+    Find qualified links
+    Build graph based on vertice and links d
+    tarjan(d)
+```
 
 ## Construcing Meta Graph
-The Directed graph considered the case when node can go back to iteself as a component. However, New York City has many one way roads, which are all ignored as components if we use Directed Graph as base. Therefore, the component criteria is that either it is a directed cyclic graph where source node can go back to itself, or it can go from source node to sink node.  
+The scc considered the case when node can go back to iteself as a component. However, New York City has many one way roads, which are all ignored as components if we use scc as base. Therefore, the component criteria is that either it is a directed cyclic graph where source node can go back to itself, or it can go from source node to sink node. 
     
     The algorithm works as follows: 
     //check non cyclic case
