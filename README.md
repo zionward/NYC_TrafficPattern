@@ -38,8 +38,8 @@ We then want to detect how link is connected based on error value, according to 
             case 3: components which no link belong to, create new bar for each component
      //result: list of [the largest list of components, start criteria, end criteria]
 ## Constructing Directed Graph
-since undirected graph igore directions, when two links has the same begin node but different end node, it was counted as a single component where as there is no way to go from one link to the other. When analyzing error flucutaion, we want to consider links containing node to go back to iteself, so we begin to count components under directed graph.
-    
+Since undirected graph igores directions, when two links have the same begin node but different end node, it was counted as a single component where as there is no way to go from one link to the other. When analyzing error flucutaion, we want to consider links containing node to go back to iteself, so we begin to count components under directed graph.
+![Picture](https://github.com/zionward/NYC_TrafficPattern/blob/master/1702/diagram/Untitled%20Diagram.png?raw=true)
 assumption:A vertex u is a source if it has no in-coming edges. A vertex u is a sink if it has no out-going edges. let C be any strong component of G that is a sink in scc(G)->C is a sink component.we use the package tarjan to get scc then use DFS algorithms to visit each node
 
 ## Construcing Meta Graph
