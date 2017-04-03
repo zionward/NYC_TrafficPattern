@@ -10,10 +10,10 @@ We then want to detect how link is connected based on error value, according to 
         put link in qualified_link_list  
     //Traversal qualifed_link_list
     
-    while(qualified_links is not empty)
+    while(qualified_link_list is not empty)
       
-      update qualified_link=traversal_list(fisrt_link,qualified_link)
-      new_component=qualified_link(before update)-qualified_link(after update)
+      update qualified_link_list=traversal_list(first_link in qualified_link_list,qualified_link)
+      new_component=qualified_link_list(before update)-qualified_link_list(after update)
       add new_component to a list of component //this is the result
         
     func traversal_list(target_link,rest_link):  
