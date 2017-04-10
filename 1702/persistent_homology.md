@@ -60,9 +60,11 @@ We use the package tarjan to get scc then use DFS algorithms to visit each node.
 ## Construcing Meta Graph
 The scc considered the case when node can go back to iteself as a component. However, New York City has many one way roads, which are all ignored as components if we use scc as base. Therefore, the component criteria is that either it is a directed cyclic graph where source node can go back to itself, or it can go from source node to sink node. 
  
-1. Find all start links.
+1. Find all start links.  
+
     Start Links: A link whose start node is not end node of any other links.
-2. Traverse the graph starting from start links by DFS (Depth-First-Search) Algorithm, at the same time using counting path method below to count path.
+
+2. Traverse the graph starting from start links by DFS (Depth-First-Search) Algorithm, at the same time using counting path method below to count path.  
     https://en.wikipedia.org/wiki/Depth-first_search
 3. From the previous SCC step, find all SCC in the graph. Shrink every SCC into a single node.
 4. Traverse the Graph starting from each SCC components, which have been shrinked into nodes, at the same time using counting path method below to count path.
