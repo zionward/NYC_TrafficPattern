@@ -1,6 +1,6 @@
 # NYC_TrafficPattern
 ## Initial step
-we start with two packages Dinoysus and TDA to do persistent homology but they required higher dimentional data sets. Then we switch to use Igraph library, which can be used to calculate components. We generated bar histogram with the help of Igrah.
+we start with two packages Dinoysus and TDA to do persistent homology but they required higher dimentional data sets. Then we switch to use Igraph library, which can be used to calculate components. We generated bar histogram with the help of Igraph.
 
 ## constructing undirected graph
 We then want to detect how link is connected based on error value, according to the merge rule(new component merge to old one), the algorithm works as follows:
@@ -59,11 +59,26 @@ We use the package tarjan to get scc then use DFS algorithms to visit each node.
 
 ## Construcing Meta Graph
 The scc considered the case when node can go back to iteself as a component. However, New York City has many one way roads, which are all ignored as components if we use scc as base. Therefore, the component criteria is that either it is a directed cyclic graph where source node can go back to itself, or it can go from source node to sink node. 
-```
-    countPath(D,scc):
-        Build meta-graph G
-        Find sourse sets V
-        For each source v in V:
-            Use Pascal's triangle get all path begining on v
- ```   
+ 
+1. Find all start links.
+    Start Links: A link whose start node is not end node of any other links.
+2. Traverse the graph starting from start links by DFS (Depth-First-Search) Algorithm, at the same time using counting path method below to count path.
+    https://en.wikipedia.org/wiki/Depth-first_search
+3. From the previous SCC step, find all SCC in the graph. Shrink every SCC into a single node.
+4. Traverse the Graph starting from each SCC components, which have been shrinked into nodes, at the same time using counting path method below to count path.
 
+### Counting path method:
+    Using Pascal's triangle  to count path. Increase the counting everytime when more than one links meets together. Adds the counting of those links together.
+    
+    Example:
+        1->->
+            2->-> 
+        1->->
+        Here we have 2 path at the end.
+    
+        1->->
+            2->->
+        1->->   4->->
+            2->->
+        1->->
+        Here we have 4 path at the end.
