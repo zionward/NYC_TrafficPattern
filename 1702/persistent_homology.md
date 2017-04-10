@@ -68,17 +68,17 @@ The scc considered the case when node can go back to iteself as a component. How
 4. Traverse the Graph starting from each SCC components, which have been shrinked into nodes, at the same time using counting path method below to count path.
 
 ### Counting path method:
-    Using Pascal's triangle  to count path. Increase the counting everytime when more than one links meets together. Adds the counting of those links together.
-    
-    Example:
-        1->->
-            2->-> 
-        1->->
-        Here we have 2 path at the end.
-    
-        1->->
-            2->->
-        1->->   4->->
-            2->->
-        1->->
-        Here we have 4 path at the end.
+Using Pascal's triangle  to count path. Increase the counting everytime when more than one links meets together. Adds the counting of those links together.
+
+Example:
+    1->->
+        2->-> 
+    1->->
+    Here we have 2 path at the end.
+
+    1->->
+        2->->
+    1->->   4->->
+        2->->
+    1->->
+    Here we have 4 path at the end.
