@@ -25,8 +25,8 @@ We then want to detect how link is connected based on error value, according to 
         
     //plot bar code
     count_result=list of list of components under each critiera
-    loop criteriera:
-    check if component existis 
+    loop critiera:
+    check if component exist 
     if the first component appear
         create bar for each component under curr_critieria
     else 
